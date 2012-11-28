@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
      "test/trailer_test.rb",
      "test/test_helper.rb"
   ]
-  s.homepage = %q{http://github.com/maddox/imdb_party}
+  s.homepage = %q{http://github.com/yestoall/imdbparty}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.4.2}
