@@ -37,15 +37,30 @@ module ImdbParty
 
       results = self.class.get("http://www.imdb.com/xml/find", :query => default_find_by_title_params).parsed_response
 
+      p "# results ################"
+      p results
+      p "# results ################"
+
       keys = ["title_popular", "title_exact", "title_approx", "title_substring"]
 
       keys.each do |key|
         if results[key]
           results[key].each do |r|
             next unless r["id"] && r["title"]
-            year = r["title_description"].match(/^(\d\d\d\d)/).to_s
-            if r["title_description"].include?("TV serie")
+            d = r["title_description"]
+            year = d.match(/^(\d\d\d\d)/).to_s
+            if d.include?("TV serie")
               kind = "tv_serie"
+            elsif d.include?("short")
+              kind = "short"
+            elsif d.include?("documentary")
+              kind = "documentary"
+            elsif d.include?("video game")
+              kind = "video_game"
+            elsif d.include?("TV movie")
+              kind = "movie"
+            elsif d.include?("video")
+              kind = "video"
             else
               kind = "movie"
             end

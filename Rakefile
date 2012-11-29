@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'rake'
 
+# run 'rake gemspec'
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
