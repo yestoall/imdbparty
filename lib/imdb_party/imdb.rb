@@ -47,10 +47,12 @@ module ImdbParty
             year = d.match(/^(\d\d\d\d)/).to_s
             if d.include?("TV serie")
               kind = "tv_serie"
-            elsif d.include?("short")
-              kind = "short"
+            if d.include?("TV mini-series")
+              kind = "tv_serie"
             elsif d.include?("documentary")
               kind = "documentary"
+            elsif d.include?("short")
+              kind = "short"
             elsif d.include?("video game")
               kind = "video_game"
             elsif d.include?("TV movie")
@@ -60,7 +62,7 @@ module ImdbParty
             else
               kind = "movie"
             end
-            h = {:title => r["title"], :year => year, :imdb_id => r["id"], :kind => kind, :desc => r["title_description"]}
+            h = {:title => r["title"], :year => year, :imdb_id => r["id"], :kind => kind}
             movie_results << h
           end
       end
