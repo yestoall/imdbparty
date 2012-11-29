@@ -66,10 +66,7 @@ module ImdbParty
             movie_results << h
           end
       end
-
-
-      end
-
+      
       movie_results
     end
 
