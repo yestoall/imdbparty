@@ -47,7 +47,7 @@ module ImdbParty
             year = d.match(/^(\d\d\d\d)/).to_s
             if d.include?("TV serie")
               kind = "tv_serie"
-            if d.include?("TV mini-series")
+            elsif d.include?("TV mini-series")
               kind = "tv_serie"
             elsif d.include?("documentary")
               kind = "documentary"
