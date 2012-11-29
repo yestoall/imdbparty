@@ -44,9 +44,12 @@ module ImdbParty
           results[key].each do |r|
             next unless r["id"] && r["title"]
             year = r["title_description"].match(/^(\d\d\d\d)/).to_s
-            kind = "movie"
-            kind = "tv_serie" if r["title_description"].include?("TV serie")
-            h = {:title => r["title"], :year => year, :imdb_id => r["id"], :kind => kind}
+            if r["title_description"].include?("TV serie")
+              kind = "tv_serie"
+            else
+              kind = "movie"
+            end
+            h = {:title => r["title"], :year => year, :imdb_id => r["id"], :kind => kind, :desc => r["title_description"]}
             movie_results << h
           end
       end
