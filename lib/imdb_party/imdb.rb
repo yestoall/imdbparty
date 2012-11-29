@@ -65,8 +65,9 @@ module ImdbParty
             h = {:title => r["title"], :year => year, :imdb_id => r["id"], :kind => kind}
             movie_results << h
           end
+        end
       end
-      
+
       movie_results
     end
 
